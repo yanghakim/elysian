@@ -4,11 +4,30 @@
 
   padding: 1% 3%
 
-  &-title
+  &-header
     color: red
     letter-spacing: 3px
 
     margin-left: 1.5%
+
+  &-date
+    color: red
+
+    position: absolute
+    right: 5%
+    top: 20px
+
+  &-title
+    font-size: 2.5em
+    letter-spacing: 5px
+
+    margin-left: 1.5%
+    margin-bottom: 10px
+
+    font-weight: 100
+
+    &::placeholder
+      color: black
 
   &__form
     display: flex
@@ -30,7 +49,7 @@
 
       word-wrap: true
       resize: none
-      overflow-y: scroll
+      overflow-y: auto
 
       &::placeholder
         color: black

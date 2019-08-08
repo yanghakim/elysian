@@ -1,7 +1,5 @@
 
 .sidebar
-  background-color: #F3F3F3
-
   font-weight: 300
 
   width: 200px
@@ -11,9 +9,9 @@
 
   transition: 0.5s ease
 
-
   &:hover
-    box-shadow: 2px 0 black
+    background-color: #F3F3F3
+    box-shadow: 10px 0 black
     color: auto
 
   &__items
@@ -42,6 +40,12 @@
       color: red
 
     &.separator
+      content: ""
+      width: 90%
+      height: 1px
+
+      border-top: 1px dashed black
+
       grid-column: 1 / span 2
 
       padding: 0
@@ -51,3 +55,20 @@
       &:hover
         font-weight: 100
         color: black
+
+  &-checkout
+    position: absolute
+    bottom: 2%
+    left: 25px
+
+    &-text
+      position: absolute
+      bottom: 1%
+      left: 70px
+
+      font-weight: 100
+      cursor: pointer
+
+      &:hover
+        color: red
+        font-weight: 300

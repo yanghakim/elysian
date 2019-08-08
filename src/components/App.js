@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Welcome from "./Welcome";
 import Checkout from "./Checkout";
 import Elysian from "./Elysian";
 
@@ -12,9 +11,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Route exact path="/" component={Welcome} />
+          <Route path="/" exact component={Elysian} />
           <Route path="/checkout" component={Checkout} />
-          <Route path="/elysian" component={Elysian} />
         </div>
       </BrowserRouter>
     );
