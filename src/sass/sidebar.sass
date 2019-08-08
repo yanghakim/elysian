@@ -1,0 +1,53 @@
+
+.sidebar
+  background-color: #F3F3F3
+
+  font-weight: 300
+
+  width: 200px
+  height: 100%
+
+  padding: 0 0 0 1%
+
+  transition: 0.5s ease
+
+
+  &:hover
+    box-shadow: 2px 0 black
+    color: auto
+
+  &__items
+    display: grid
+    grid-template-columns: 0.1fr 1fr
+    grid-row-gap: 20px
+
+    align-items: center
+
+  &-title
+    font-weight: 100
+    letter-spacing: 10px
+    font-size: 1.5em
+
+    grid-column: 1 / span 2
+
+  &-item
+    font-weight: 100
+    padding: 0 0 0 10%
+    margin: 0
+
+    cursor: pointer
+
+    &:hover
+      font-weight: 300
+      color: red
+
+    &.separator
+      grid-column: 1 / span 2
+
+      padding: 0
+
+      cursor: default
+
+      &:hover
+        font-weight: 100
+        color: black

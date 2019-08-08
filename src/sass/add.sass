@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap')
+
+.hide
+  display: none !important
+
+.copy
+  align-self: flex-end
+  position: absolute
+  top: 130px
+
+  background-color: black
+
+  padding: 5px
+
+  color: white
+  text-align: center
+  font-size: 0.9em
+
+  z-index: 2
+
+  animation: 0.5s ease
+
+.add
+  margin: 0 10px 0 -10px
+
+  &-btn
+    outline: none
+    background: none
+    border: none
+
+    color: red
+    font-family: "Roboto Mono", monospace
+    font-size: 1em
+    font-weight: 300
+
+    opacity: 0.9
+
+    align-self: baseline
+
+    cursor: pointer
+    transition: 0.5s ease
+
+    &:hover
+      background-color: #F0F0F0
+      box-shadow: -2px 2px black
+
+    &.active
+      background-color: #F0F0F0
+
+      border-radius: 5px 0 0 0
+      box-shadow: -2px 2px black
+      color: black
+
+  &__hidden
+    position: absolute
+
+    max-width: 70vw
+    min-width: 230px
+
+    transition: 0.5s ease
+
+    background-color: #F0F0F0
+    opacity: 0.9
+    border-radius: 0 5px 5px 5px
+    box-shadow: -2px 2px black
+
+    font-family: "Roboto Mono", monospace
+    font-size: 0.8em
+    font-weight: 300
+
+    display: flex
+    flex-direction: column
+
+    padding: 25px 15px 15px 15px
+
+    animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both
+
+    &.exit
+      animation: swing-out-top-bck 0.45s cubic-bezier(0.600, -0.280, 0.735, 0.045) both
+
+    &-item
+      text-decoration: none
+
+      cursor: pointer
+      color: black
+
+      transition: 0.5s ease
+
+      &:hover
+        color: red
+
+      &.results
+        padding: 10px
+        margin-top: 0
+
+        cursor: auto
+
+        font-size: 0.9em
+        color: black
+
+        background-color: #E0e0e0
+
+        cursor: pointer
+
+      &.translation
+        color: black
+        cursor: default
+
+        background-color: #E0e0e0
+        padding-left: 5px
+        margin-bottom: 0px
+
+        border: 1px solid black
+        border-bottom: none
+
+        width: 30px
+
+      &.input
+        cursor: auto
+        color: red
+
+        background-color: #E0e0e0
+        border: 1px solid black
+        padding: 5px
+
+        &:focus
+          border-bottom: 1px solid red
+
+      &.searching
+        color: red
+
+
+@keyframes swing-in-top-fwd
+  0%
+    transform: rotateX(100deg)
+    transform-origin: top
+    opacity: 0
+
+  100%
+    transform: rotateX(0)
+    transform-origin: top
+    opacity: 1
+
+@keyframes swing-out-top-bck
+  0%
+    transform: rotateX(0)
+    transform-origin: top
+    opacity: 1
+
+  100%
+    transform: rotateX(100deg)
+    transform-origin: top
+    opacity: 0

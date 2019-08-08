@@ -1,0 +1,1 @@
+export const BIBLE_API = `2b56d3016714c2b2c235b064c9579a563bcf798f`;
