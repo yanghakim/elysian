@@ -8,10 +8,24 @@
 
   transition: 0.5s ease
 
+  background-color: #F3F3F3
+
+  animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards
+
   &:hover
-    background-color: #F3F3F3
-    box-shadow: 10px 0 black
+    background-color: #fff
     color: auto
+
+  &.exit
+    animation: slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards
+
+  @media (max-width: 900px)
+    box-shadow: 2px 0 black
+    color: auto
+    padding: 0 10px
+    box-sizing: border-box
+
+    max-width: 42px
 
   &__items
     display: grid
@@ -20,6 +34,9 @@
 
     align-items: center
 
+    @media (max-width: 900px)
+      grid-template-columns: 1fr
+
   &-title
     font-weight: 100
     letter-spacing: 10px
@@ -27,12 +44,29 @@
 
     grid-column: 1 / span 2
 
+    @media (max-width: 900px)
+      grid-column: 1
+      word-break: break-all
+      font-size: 1.3em
+      letter-spacing: 0
+
+  img
+    cursor: pointer
+    border: 1px solid white
+
+    @media (max-width: 900px)
+      &:hover
+        border: 1px solid black
+
   &-item
     font-weight: 100
     padding: 0 0 0 10%
     margin: 0
 
     cursor: pointer
+
+    @media (max-width: 900px)
+      display: none
 
     &:hover
       font-weight: 300
@@ -76,13 +110,41 @@
     transition: 0.5s ease
 
     cursor: pointer
-    &:hover
-      background-color: #E0e0e0
+
+    @media (max-width: 900px)
+      width: auto
 
     &-img
       margin-left: -50px
+
+      @media (max-width: 900px)
+        margin-left: 0
+        width: 18px
+        height: 18px
 
     &-text
       margin-left: 15px
 
       font-weight: 100
+
+      @media (max-width: 900px)
+        display: none
+
+      &:hover
+        font-weight: 500
+
+@keyframes slide-in-left
+  0%
+    width: 0
+    display: none
+  100%
+    width: 200px
+    display: block
+
+@keyframes slide-out-left
+  0%
+    opacity: 1
+
+  100%
+    width: 0
+    display: none

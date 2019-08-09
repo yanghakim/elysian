@@ -12,7 +12,9 @@ class Elysian extends Component {
     super();
 
     this.state = {
-      section: "bible"
+      section: "bible",
+      sidebarClass: "sidebar",
+      viewSidebar: true
     };
   }
 
@@ -48,10 +50,35 @@ class Elysian extends Component {
     }
   };
 
+  toggleSideBar = () => {
+    if (this.state.sidebarClass === "sidebar") {
+      this.setState({
+        sidebarClass: "sidebar exit"
+      });
+      setTimeout(() => {
+        this.setState({
+          viewSidebar: false
+        });
+      }, 500);
+    } else if (this.state.sidebarClass === "sidebar exit") {
+      this.setState({
+        sidebarClass: "sidebar",
+        viewSidebar: true
+      });
+    }
+  };
+
   render() {
     return (
       <div className="elysian">
-        <Sidebar switchSections={this.switchSections} />
+        {this.state.viewSidebar && (
+          <Sidebar
+            switchSections={this.switchSections}
+            sidebarClass={this.state.sidebarClass}
+          />
+        )}
+
+        <span className="elysian-toggleSide" onClick={this.toggleSideBar} />
         {this.state.section === "settings" && <Settings />}
         {!this.state.section && <Login switchSections={this.switchSections} />}
         {this.state.section !== "settings" && (

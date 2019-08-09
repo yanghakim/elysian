@@ -39,7 +39,7 @@ class Sidebar extends Component {
     }
 
     return (
-      <div className="sidebar">
+      <div className={this.props.sidebarClass}>
         <div className="sidebar__items">
           <h1 className="sidebar-title">elysian</h1>
 
@@ -49,6 +49,7 @@ class Sidebar extends Component {
             height="18"
             width="18"
             alt="settings"
+            onClick={() => this.props.switchSections("settings")}
           />
           <p
             className="sidebar-item name"
@@ -57,7 +58,13 @@ class Sidebar extends Component {
             yangha kim
           </p>
 
-          <img src={bible} height="18" width="18" alt="bible" />
+          <img
+            src={bible}
+            height="18"
+            width="18"
+            alt="bible"
+            onClick={() => this.props.switchSections("bible")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("bible")}
@@ -65,7 +72,13 @@ class Sidebar extends Component {
             bible
           </p>
 
-          <img src={praying} height="18" width="18" alt="praying" />
+          <img
+            src={praying}
+            height="18"
+            width="18"
+            alt="praying"
+            onClick={() => this.props.switchSections("quiet times")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("quiet times")}
@@ -73,7 +86,15 @@ class Sidebar extends Component {
             quiet times
           </p>
 
-          <img src={article} height="18" width="18" alt="article" />
+          <img
+            src={article}
+            height="18"
+            width="18"
+            alt="article"
+            onClick={() =>
+              this.props.switchSections("devotionals/articles/podcasts")
+            }
+          />
           <p
             className="sidebar-item"
             onClick={() =>
@@ -87,7 +108,13 @@ class Sidebar extends Component {
             podcasts
           </p>
 
-          <img src={book} height="18" width="18" alt="book" />
+          <img
+            src={book}
+            height="18"
+            width="18"
+            alt="book"
+            onClick={() => this.props.switchSections("books/novels")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("books/novels")}
@@ -95,7 +122,13 @@ class Sidebar extends Component {
             books/novels
           </p>
 
-          <img src={sermon} height="18" width="18" alt="sermon" />
+          <img
+            src={sermon}
+            height="18"
+            width="18"
+            alt="sermon"
+            onClick={() => this.props.switchSections("sermons")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("sermons")}
@@ -103,7 +136,13 @@ class Sidebar extends Component {
             sermons
           </p>
 
-          <img src={photo} height="18" width="18" alt="photography" />
+          <img
+            src={photo}
+            height="18"
+            width="18"
+            alt="photography"
+            onClick={() => this.props.switchSections("photography/snapshots")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("photography/snapshots")}
@@ -113,7 +152,13 @@ class Sidebar extends Component {
             snapshots
           </p>
 
-          <img src={poetry} height="18" width="18" alt="poetry" />
+          <img
+            src={poetry}
+            height="18"
+            width="18"
+            alt="poetry"
+            onClick={() => this.props.switchSections("poems")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("poems")}
@@ -121,7 +166,13 @@ class Sidebar extends Component {
             poems
           </p>
 
-          <img src={guitar} height="18" width="18" alt="guitar" />
+          <img
+            src={guitar}
+            height="18"
+            width="18"
+            alt="guitar"
+            onClick={() => this.props.switchSections("songs/lyrics")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("songs/lyrics")}
@@ -129,7 +180,13 @@ class Sidebar extends Component {
             songs/lyrics
           </p>
 
-          <img src={meetup} height="18" width="18" alt="meetup" />
+          <img
+            src={meetup}
+            height="18"
+            width="18"
+            alt="meetup"
+            onClick={() => this.props.switchSections("meetups")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("meetups")}
@@ -137,7 +194,13 @@ class Sidebar extends Component {
             meet ups
           </p>
 
-          <img src={friend} height="18" width="18" alt="friend" />
+          <img
+            src={friend}
+            height="18"
+            width="18"
+            alt="friend"
+            onClick={() => this.props.switchSections("relationships")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("relationships")}
@@ -145,7 +208,13 @@ class Sidebar extends Component {
             relationships
           </p>
 
-          <img src={family} height="18" width="18" alt="family" />
+          <img
+            src={family}
+            height="18"
+            width="18"
+            alt="family"
+            onClick={() => this.props.switchSections("family")}
+          />
           <p
             className="sidebar-item"
             onClick={() => this.props.switchSections("family")}
@@ -167,8 +236,11 @@ class Sidebar extends Component {
             className="sidebar__checkout-img"
             width="30"
             height="30"
+            onClick={this.toCheckout}
           />
-          <p className="sidebar__checkout-text">checkout</p>
+          <p className="sidebar__checkout-text" onClick={this.toCheckout}>
+            checkout
+          </p>
         </div>
       </div>
     );
