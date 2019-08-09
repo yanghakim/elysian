@@ -24,7 +24,7 @@ class Checkout extends Component {
       this.setState({
         toMainMenu: true
       });
-    }, 1000);
+    }, 200);
   };
 
   render() {

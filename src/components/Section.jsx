@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TextareaAutosize from "react-autosize-textarea";
 
 import Add from "./Add";
 
@@ -13,18 +14,20 @@ class Section extends Component {
     this.state = {
       title: "",
       titlePlaceholder: "TITLE",
-      text: "",
-      bibleText: "",
-      qtText: "",
-      devoText: "",
-      bookText: "",
-      sermonText: "",
-      photoText: "",
-      poemText: "",
-      songText: "",
-      meetupText: "",
-      relationshipText: "",
-      familyText: "",
+      numOfSections: 1,
+      text: [""],
+      newText: [""],
+      bibleText: [""],
+      qtText: [""],
+      devoText: [""],
+      bookText: [""],
+      sermonText: [""],
+      photoText: [""],
+      poemText: [""],
+      songText: [""],
+      meetupText: [""],
+      relationshipText: [""],
+      familyText: [""],
       date: ""
     };
   }
@@ -177,10 +180,16 @@ class Section extends Component {
     }
   }
 
-  handleTextChange = e => {
+  handleTitleChange = e => {
     this.setState({
-      text: e.target.value
+      title: e.target.value
     });
+  };
+
+  handleTextChange = e => {
+    const index = e.target.attributes.getNamedItem("index").value;
+    this.state.text[index] = e.target.value;
+    this.forceUpdate();
   };
 
   setText = () => {
@@ -244,12 +253,47 @@ class Section extends Component {
     }
   };
 
+  renderTextAreas = () => {
+    let num = this.state.text;
+
+    return (
+      <div>
+        {num.map((text, index) => {
+          console.log(this.state.text[index]);
+          return (
+            <div className="section__form">
+              <Add />
+              <TextareaAutosize
+                className="section__form-input"
+                type="text"
+                index={index}
+                value={this.state.text[index]}
+                onChange={this.handleTextChange}
+                placeholder="reflections/notes"
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  addSection = () => {
+    this.setState(prevState => {
+      return {
+        text: [...this.state.text, this.state.newText],
+        numOfSections: prevState.numOfSections + 1
+      };
+    });
+  };
+
   render() {
+    console.log(this.state.text);
+
     return (
       <div className="section">
         <p className="section-header">{this.props.section}</p>
         <p className="section-date">{this.state.date}</p>
-
         <input
           className="section-title"
           type="text"
@@ -257,17 +301,25 @@ class Section extends Component {
           onChange={this.handleTitleChange}
           placeholder={this.state.titlePlaceholder}
         />
-        <div className="section__form">
-          <Add />
-
-          <textarea
-            className="section__form-input"
-            type="text"
-            value={this.state.text}
-            onChange={this.handleTextChange}
-            placeholder="reflections/notes"
+        {this.props.section === "photography/snapshots" && (
+          <button className="section-btn">open Google photos</button>
+        )}
+        {this.props.section === "photography/snapshots" && (
+          <button className="section-btn">open iCloud photos</button>
+        )}
+        {this.props.section === "devotionals/articles" && (
+          <input
+            className="section-link"
+            placeholder="link to devotional/article"
           />
-        </div>
+        )}
+        {this.props.section === "songs/lyrics" && (
+          <button className="section-btn">search song/lyrics</button>
+        )}
+        {this.renderTextAreas()}
+        <button className="section__form-button" onClick={this.addSection}>
+          add another section
+        </button>
       </div>
     );
   }

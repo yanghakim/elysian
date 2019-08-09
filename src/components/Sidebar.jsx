@@ -142,10 +142,15 @@ class Sidebar extends Component {
           <img src={bible} height="0" width="0" alt="reminders" />
           <p className="sidebar-item">reminders</p>
         </div>
-        <img src={cart} className="sidebar-checkout" width="30" height="30" />
-        <p className="sidebar-checkout-text" onClick={this.toCheckout}>
-          checkout
-        </p>
+        <div className="sidebar__checkout" onClick={this.toCheckout}>
+          <img
+            src={cart}
+            className="sidebar__checkout-img"
+            width="30"
+            height="30"
+          />
+          <p className="sidebar__checkout-text">checkout</p>
+        </div>
       </div>
     );
   }
