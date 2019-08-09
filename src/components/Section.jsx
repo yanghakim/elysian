@@ -17,6 +17,10 @@ class Section extends Component {
       numOfSections: 1,
       text: [""],
       newText: [""],
+      deletedText: "",
+      deletedIndex: null,
+      showDeletedNotif: false,
+      undoClass: "section-undobtn",
       bibleText: [""],
       qtText: [""],
       devoText: [""],
@@ -32,6 +36,9 @@ class Section extends Component {
     };
   }
 
+  /**
+   * Setting today's date
+   **/
   componentDidMount() {
     let today = new Date();
     const dd = String(today.getDate()).padStart(2, "0");
@@ -43,6 +50,11 @@ class Section extends Component {
     });
   }
 
+  /**
+   * Handling SAVING text when leaving a section,
+   * RETREIVING text when returning to a section,
+   * and RESETING text input when appropriate
+   **/
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.section !== this.props.section) {
       switch (prevProps.section) {
@@ -180,6 +192,9 @@ class Section extends Component {
     }
   }
 
+  /**
+   * Handling TITLE and BODY text changes
+   **/
   handleTitleChange = e => {
     this.setState({
       title: e.target.value
@@ -192,6 +207,9 @@ class Section extends Component {
     this.forceUpdate();
   };
 
+  /**
+   * SETTING header text by section name
+   **/
   setText = () => {
     switch (this.props.section) {
       case "bible":
@@ -253,17 +271,20 @@ class Section extends Component {
     }
   };
 
+  /**
+   * Rendering TEXT AREA, adding and subtracting lines when appropriate
+   **/
   renderTextAreas = () => {
     let num = this.state.text;
+    let length = num.length;
 
     return (
       <div>
         {num.map((text, index) => {
-          console.log(this.state.text[index]);
           return (
             <div className="section__form">
-              {index === 0 && <button style={{ opacity: 0 }}>-</button>}
-              {index > 0 && (
+              {length === 1 && <button style={{ opacity: 0 }}>-</button>}
+              {length > 1 && (
                 <button
                   className="section__form-subtract"
                   index={index}
@@ -288,6 +309,11 @@ class Section extends Component {
     );
   };
 
+  /**
+   * Handle ADDING and SUBTRACTING sections
+   * Substracting handles rendering UNDO notification,
+   * and caching recent deletion
+   **/
   addSection = () => {
     this.setState(prevState => {
       return {
@@ -299,13 +325,49 @@ class Section extends Component {
 
   subtractSection = e => {
     const index = e.target.attributes.getNamedItem("index").value;
+    this.setState({
+      deletedText: this.state.text[index],
+      deletedIndex: index,
+      showDeletedNotif: true
+    });
+    setTimeout(() => {
+      this.setState({
+        undoClass: "section-undobtn exit"
+      });
+    }, 10000);
+    setTimeout(() => {
+      this.setState({
+        showDeletedNotif: false
+      });
+    }, 10500);
+    setTimeout(() => {
+      this.setState({
+        undoClass: "section-undobtn"
+      });
+    }, 10600);
     this.state.text.splice(index, 1);
     this.forceUpdate();
   };
 
-  render() {
-    console.log(this.state.text);
+  /**
+   * Handles UNDOING deletions
+   **/
+  undoDeletion = () => {
+    console.log(this.state.deletedIndex, this.state.deletedText);
+    this.state.text.splice(this.state.deletedIndex, 0, this.state.deletedText);
+    this.forceUpdate();
 
+    this.setState({
+      showDeletedNotif: false
+    });
+    setTimeout(() => {
+      this.setState({
+        undoClass: "section-undobtn"
+      });
+    }, 100);
+  };
+
+  render() {
     return (
       <div className="section">
         <p className="section-header">{this.props.section}</p>
@@ -336,6 +398,11 @@ class Section extends Component {
         <button className="section__form-newline" onClick={this.addSection}>
           add another section
         </button>
+        {this.state.showDeletedNotif && (
+          <button className={this.state.undoClass} onClick={this.undoDeletion}>
+            undo delete?
+          </button>
+        )}
       </div>
     );
   }
