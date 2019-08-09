@@ -44,7 +44,7 @@ class Sidebar extends Component {
           <h1 className="sidebar-title">elysian</h1>
 
           <img
-            className="sidebar-item name"
+            style={{ marginTop: "-20px", marginBottom: "20px" }}
             src={settings}
             height="18"
             width="18"

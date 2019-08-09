@@ -12,6 +12,8 @@
 
   animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards
 
+  z-index: 1
+
   &:hover
     background-color: #fff
     color: auto
@@ -20,11 +22,11 @@
     animation: slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards
 
   @media (max-width: 900px)
-    box-shadow: 2px 0 black
     color: auto
     padding: 0 10px
     box-sizing: border-box
 
+    min-width: 42px !important
     max-width: 42px
 
   &__items
@@ -49,6 +51,8 @@
       word-break: break-all
       font-size: 1.3em
       letter-spacing: 0
+
+      margin-left: 4px
 
   img
     cursor: pointer
@@ -136,15 +140,16 @@
 @keyframes slide-in-left
   0%
     width: 0
-    display: none
+    opacity: 0
   100%
+    opacity: 1
     width: 200px
-    display: block
 
 @keyframes slide-out-left
   0%
     opacity: 1
 
   100%
+    opacity: 0
     width: 0
     display: none

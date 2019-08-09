@@ -344,42 +344,48 @@ class Section extends Component {
 
   render() {
     return (
-      <div className="section">
-        <p className="section-header">{this.props.section}</p>
-        <p className="section-date">{this.state.date}</p>
-        <input
-          className="section-title"
-          type="text"
-          value={this.state.title}
-          onChange={this.handleTitleChange}
-          placeholder={this.state.titlePlaceholder}
-        />
-        {this.props.section === "photography/snapshots" && (
-          <button className="section-btn">open Google photos</button>
-        )}
-        {this.props.section === "photography/snapshots" && (
-          <button className="section-btn">open iCloud photos</button>
-        )}
-        {this.state.linkPlaceholder && (
+      <div className="dynamicContainer">
+        <div className="section">
+          <p className="section-header">{this.props.section}</p>
+          <p className="section-date">{this.state.date}</p>
           <input
-            className="section-link"
-            placeholder={this.state.linkPlaceholder}
-            value={this.state.linkValue}
-            onChange={this.handleLinkChange}
+            className="section-title"
+            type="text"
+            value={this.state.title}
+            onChange={this.handleTitleChange}
+            placeholder={this.state.titlePlaceholder}
           />
-        )}
-        {this.props.section === "songs/lyrics" && (
-          <button className="section-btn">search song/lyrics</button>
-        )}
-        {this.renderTextAreas()}
-        <button className="section__form-newline" onClick={this.addSection}>
-          add another section
-        </button>
-        {this.state.showDeletedNotif && (
-          <button className={this.state.undoClass} onClick={this.undoDeletion}>
-            undo delete?
+          {this.props.section === "photography/snapshots" && (
+            <button className="section-btn">open Google photos</button>
+          )}
+          {this.props.section === "photography/snapshots" && (
+            <button className="section-btn">open iCloud photos</button>
+          )}
+          {this.state.linkPlaceholder && (
+            <input
+              className="section-link"
+              placeholder={this.state.linkPlaceholder}
+              value={this.state.linkValue}
+              onChange={this.handleLinkChange}
+            />
+          )}
+          {this.props.section === "songs/lyrics" && (
+            <button className="section-btn">search song/lyrics</button>
+          )}
+          {this.renderTextAreas()}
+          <button className="section__form-newline" onClick={this.addSection}>
+            add another section
           </button>
-        )}
+          {this.state.showDeletedNotif && (
+            <button
+              className={this.state.undoClass}
+              onClick={this.undoDeletion}
+            >
+              undo delete?
+            </button>
+          )}
+          <button className="section-savebtn">save</button>
+        </div>
       </div>
     );
   }

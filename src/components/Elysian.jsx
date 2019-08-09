@@ -55,11 +55,18 @@ class Elysian extends Component {
       this.setState({
         sidebarClass: "sidebar exit"
       });
-      setTimeout(() => {
+      let mediaQuery = window.matchMedia("(max-width: 900px)");
+      if (mediaQuery.matches) {
         this.setState({
           viewSidebar: false
         });
-      }, 500);
+      } else {
+        setTimeout(() => {
+          this.setState({
+            viewSidebar: false
+          });
+        }, 500);
+      }
     } else if (this.state.sidebarClass === "sidebar exit") {
       this.setState({
         sidebarClass: "sidebar",
