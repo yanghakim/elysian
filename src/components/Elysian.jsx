@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
-import Welcome from "./Welcome";
+import Login from "./Login";
 import Sidebar from "./Sidebar";
 import Section from "./Section";
+import Settings from "./Settings";
 
 import "../sass/elysian.sass";
 
@@ -25,7 +26,7 @@ class Elysian extends Component {
         break;
       case "quiet times":
         break;
-      case "devotionals/articles":
+      case "devotionals/articles/podcasts":
         break;
       case "books/novels":
         break;
@@ -51,10 +52,11 @@ class Elysian extends Component {
     return (
       <div className="elysian">
         <Sidebar switchSections={this.switchSections} />
-        {!this.state.section && (
-          <Welcome switchSections={this.switchSections} />
+        {this.state.section === "settings" && <Settings />}
+        {!this.state.section && <Login switchSections={this.switchSections} />}
+        {this.state.section !== "settings" && (
+          <Section section={this.state.section} />
         )}
-        {this.state.section && <Section section={this.state.section} />}
       </div>
     );
   }

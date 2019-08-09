@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
+import settings from "../assets/settings.png";
 import bible from "../assets/bible.png";
 import book from "../assets/book.png";
 import article from "../assets/article.png";
@@ -42,6 +43,20 @@ class Sidebar extends Component {
         <div className="sidebar__items">
           <h1 className="sidebar-title">elysian</h1>
 
+          <img
+            className="sidebar-item name"
+            src={settings}
+            height="18"
+            width="18"
+            alt="settings"
+          />
+          <p
+            className="sidebar-item name"
+            onClick={() => this.props.switchSections("settings")}
+          >
+            yangha kim
+          </p>
+
           <img src={bible} height="18" width="18" alt="bible" />
           <p
             className="sidebar-item"
@@ -61,11 +76,15 @@ class Sidebar extends Component {
           <img src={article} height="18" width="18" alt="article" />
           <p
             className="sidebar-item"
-            onClick={() => this.props.switchSections("devotionals/articles")}
+            onClick={() =>
+              this.props.switchSections("devotionals/articles/podcasts")
+            }
           >
             devotionals/
             <br />
-            articles
+            articles/
+            <br />
+            podcasts
           </p>
 
           <img src={book} height="18" width="18" alt="book" />

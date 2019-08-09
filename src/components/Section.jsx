@@ -77,7 +77,7 @@ class Section extends Component {
             qtText: this.state.text
           });
           break;
-        case "devotionals/articles":
+        case "devotionals/articles/podcasts":
           this.setState({
             devoText: this.state.text,
             linkDevoText: this.state.linkValue
@@ -151,11 +151,11 @@ class Section extends Component {
             linkPlaceholder: null
           });
           break;
-        case "devotionals/articles":
+        case "devotionals/articles/podcasts":
           this.setState({
             text: this.state.devoText,
             titlePlaceholder: "TITLE",
-            linkPlaceholder: "link to devotional/article",
+            linkPlaceholder: "link to devotional/article/podcasts",
             linkValue: this.state.linkDevoText
           });
           break;
