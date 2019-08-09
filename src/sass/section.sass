@@ -8,7 +8,6 @@
     color: red
     letter-spacing: 3px
 
-    margin-left: 1.5%
 
   &-date
     color: red
@@ -22,13 +21,13 @@
     letter-spacing: 5px
     width: 90%
 
-    margin-left: 1.5%
+    margin-left: 0px
     margin-bottom: 10px
 
     font-weight: 100
 
     &::placeholder
-      color: black
+      color: lighten(black, 20%)
 
   &-btn
     border: 1px solid red
@@ -60,11 +59,13 @@
     transition: 0.3s ease
 
     &::placeholder
+      font-weight: 100
       color: black
 
   &__form
     display: grid
-    grid-template-columns: 0.01fr 1fr
+    grid-template-columns: 0.12fr 0.12fr 1fr
+    margin-left: -25px
 
     &-input
       outline: none
@@ -85,6 +86,7 @@
       overflow-y: auto
 
       &::placeholder
+        font-weight: 100
         color: black
 
       &::-webkit-scrollbar
@@ -94,15 +96,31 @@
       &::-webkit-scrollbar-thumb
         background-color: grey
 
-    &-button
-      grid-column: 2
-      justify-self: flex-start
+    &-subtract
+      font-size: 1em
+      font-weight: 300
+
+      opacity: 0.9
+
+      align-self: baseline
+
+      z-index: 0
+
+      cursor: pointer
+      transition: 0.5s ease
+
+      &:hover
+        font-weight: 900
+
+    &-newline
+      grid-column: 1 / span 3
 
       font-size: 0.8em
       color: grey
-      margin-left: -5px
+      margin-left: 0px
 
       transition: 0.5s ease
+      cursor: pointer
 
       &:hover
         background-color: grey

@@ -29,10 +29,6 @@
   margin: 0 10px 0 -10px
 
   &-btn
-    outline: none
-    background: none
-    border: none
-
     color: red
     font-family: "Roboto Mono", monospace
     font-size: 1em
@@ -41,6 +37,8 @@
     opacity: 0.9
 
     align-self: baseline
+
+    z-index: 0
 
     cursor: pointer
     transition: 0.5s ease
@@ -77,6 +75,8 @@
     flex-direction: column
 
     padding: 25px 15px 15px 15px
+
+    z-index: 2
 
     animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both
 

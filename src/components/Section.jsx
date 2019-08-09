@@ -262,6 +262,16 @@ class Section extends Component {
           console.log(this.state.text[index]);
           return (
             <div className="section__form">
+              {index === 0 && <button style={{ opacity: 0 }}>-</button>}
+              {index > 0 && (
+                <button
+                  className="section__form-subtract"
+                  index={index}
+                  onClick={this.subtractSection}
+                >
+                  -
+                </button>
+              )}
               <Add />
               <TextareaAutosize
                 className="section__form-input"
@@ -285,6 +295,12 @@ class Section extends Component {
         numOfSections: prevState.numOfSections + 1
       };
     });
+  };
+
+  subtractSection = e => {
+    const index = e.target.attributes.getNamedItem("index").value;
+    this.state.text.splice(index, 1);
+    this.forceUpdate();
   };
 
   render() {
@@ -317,7 +333,7 @@ class Section extends Component {
           <button className="section-btn">search song/lyrics</button>
         )}
         {this.renderTextAreas()}
-        <button className="section__form-button" onClick={this.addSection}>
+        <button className="section__form-newline" onClick={this.addSection}>
           add another section
         </button>
       </div>

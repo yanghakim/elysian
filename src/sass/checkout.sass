@@ -63,6 +63,8 @@
     width: 25vw
     height: 100vh
 
+    font-size: 0.9em
+
     padding: 1% 1% 1% 2%
 
     box-sizing: border-box
@@ -83,7 +85,6 @@
       &::-webkit-scrollbar-thumb
         background-color: black
 
-
       &-text
         margin: 30px 0
 
@@ -94,16 +95,19 @@
       grid-template-columns: repeat(2, 1fr)
 
       margin-right: 25px
+      font-weight: 300
 
       &-header
         grid-column: 1 / span 2
         color: red
+        font-weight: 500
 
       &-price
         justify-self: flex-end
 
         &.total
           color: red
+          font-weight: 500
 
 @keyframes fade-in
   0%
