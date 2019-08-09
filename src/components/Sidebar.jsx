@@ -15,6 +15,7 @@ import friend from "../assets/friend.png";
 import family from "../assets/family.png";
 
 import cart from "../assets/cart.png";
+import key from "../assets/key.png";
 
 import "../sass/sidebar.sass";
 
@@ -230,16 +231,26 @@ class Sidebar extends Component {
           <img src={bible} height="0" width="0" alt="reminders" />
           <p className="sidebar-item">reminders</p>
         </div>
-        <div className="sidebar__checkout" onClick={this.toCheckout}>
+        <div className="sidebar__footer">
           <img
             src={cart}
-            className="sidebar__checkout-img"
-            width="30"
-            height="30"
+            className="sidebar__footer-img"
+            width="18"
+            height="18"
             onClick={this.toCheckout}
           />
-          <p className="sidebar__checkout-text" onClick={this.toCheckout}>
+          <p className="sidebar__footer-text" onClick={this.toCheckout}>
             checkout
+          </p>
+          <img
+            src={key}
+            className="sidebar__footer-img"
+            width="18"
+            height="18"
+            onClick={this.handleLogout}
+          />
+          <p className="sidebar__footer-text" onClick={this.handleLogout}>
+            logout
           </p>
         </div>
       </div>

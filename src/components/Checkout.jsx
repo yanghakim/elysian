@@ -34,14 +34,22 @@ class Checkout extends Component {
 
     return (
       <div className={this.state.checkoutClass}>
-        <p className="checkout-back" onClick={this.toMainMenu}>
-          back
-        </p>
-        <div className="checkout__heading">
-          <p className="checkout__heading-title">elysian</p>
-          <p className="checkout__heading-header">checkout</p>
+        <div className="checkout__left">
+          <p className="checkout__left-back" onClick={this.toMainMenu}>
+            back
+          </p>
+          <div className="checkout__left__heading">
+            <p className="checkout__left__heading-title">elysian</p>
+            <p className="checkout__left__heading-header">checkout</p>
+          </div>
+          <img
+            className="checkout__left-img"
+            src={preview}
+            width="450"
+            height="450"
+          />
+          <span className="checkout__left-expandbtn" />
         </div>
-        <img className="checkout-img" src={preview} width="620" height="600" />
         <div className="checkout__interior">
           <p className="checkout__interior-header">preview interior</p>
           <div className="checkout__interior-journal">
