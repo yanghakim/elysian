@@ -143,7 +143,7 @@ class Add extends Component {
 
   render() {
     return (
-      <div className="add">
+      <div className="add undraggable">
         <button className={this.state.buttonClass} onClick={this.toggleView}>
           +
         </button>

@@ -253,20 +253,28 @@ class Section extends Component {
 
     return num.map((text, index) => {
       return (
-        <div className="section__form" key={index}>
-          {length === 1 && <button style={{ opacity: 0 }}>-</button>}
-          {length > 1 && (
-            <button
-              className="section__form-subtract"
-              index={index}
-              onClick={this.subtractSection}
-            >
-              -
-            </button>
-          )}
-          <Add />
-          <TextareaAutosize
-            className="section__form-input"
+        <div
+          className="section__form"
+          key={index}
+          data-grid={{ x: 0, y: index + 2, w: 12, h: 2, minW: 3, minH: 2 }}
+        >
+          <div className="section__form__top">
+            <button className="section__form__top-subtract">=</button>
+            <Add />
+            {length === 1 && <button style={{ opacity: 0 }}>-</button>}
+            {length > 1 && (
+              <button
+                className="section__form__top-subtract undraggable"
+                index={index}
+                onClick={this.subtractSection}
+              >
+                -
+              </button>
+            )}
+          </div>
+
+          <textarea
+            className="section__form-input undraggable"
             type="text"
             index={index}
             value={this.state.text[index]}
@@ -346,8 +354,10 @@ class Section extends Component {
     return (
       <div className="dynamicContainer">
         <div className="section">
-          <p className="section-header">{this.props.section}</p>
-          <p className="section-date">{this.state.date}</p>
+          <div className="section__top">
+            <p className="section__top-header">{this.props.section}</p>
+            <p className="section__top-date">{this.state.date}</p>
+          </div>
           <input
             className="section-title"
             type="text"
@@ -372,7 +382,13 @@ class Section extends Component {
           {this.props.section === "songs/lyrics" && (
             <button className="section-btn">search song/lyrics</button>
           )}
-          <GridLayout className="layout" cols={12} rowHeight={30} width={1200}>
+          <GridLayout
+            className="layout"
+            draggableCancel=".undraggable"
+            cols={12}
+            rowHeight={30}
+            width={740}
+          >
             {this.renderTextAreas()}
           </GridLayout>
 
