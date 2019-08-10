@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import TextareaAutosize from "react-autosize-textarea";
 
+import GridLayout from "react-grid-layout";
+import "../css/react-grid-layout.css";
+import "../css/react-resizable.css";
+
 import Add from "./Add";
 
 import cart from "../assets/cart.png";
@@ -247,35 +251,31 @@ class Section extends Component {
     let num = this.state.text;
     let length = num.length;
 
-    return (
-      <div>
-        {num.map((text, index) => {
-          return (
-            <div className="section__form">
-              {length === 1 && <button style={{ opacity: 0 }}>-</button>}
-              {length > 1 && (
-                <button
-                  className="section__form-subtract"
-                  index={index}
-                  onClick={this.subtractSection}
-                >
-                  -
-                </button>
-              )}
-              <Add />
-              <TextareaAutosize
-                className="section__form-input"
-                type="text"
-                index={index}
-                value={this.state.text[index]}
-                onChange={this.handleTextChange}
-                placeholder="reflections/notes"
-              />
-            </div>
-          );
-        })}
-      </div>
-    );
+    return num.map((text, index) => {
+      return (
+        <div className="section__form" key={index}>
+          {length === 1 && <button style={{ opacity: 0 }}>-</button>}
+          {length > 1 && (
+            <button
+              className="section__form-subtract"
+              index={index}
+              onClick={this.subtractSection}
+            >
+              -
+            </button>
+          )}
+          <Add />
+          <TextareaAutosize
+            className="section__form-input"
+            type="text"
+            index={index}
+            value={this.state.text[index]}
+            onChange={this.handleTextChange}
+            placeholder="reflections/notes"
+          />
+        </div>
+      );
+    });
   };
 
   /**
@@ -372,7 +372,10 @@ class Section extends Component {
           {this.props.section === "songs/lyrics" && (
             <button className="section-btn">search song/lyrics</button>
           )}
-          {this.renderTextAreas()}
+          <GridLayout className="layout" cols={12} rowHeight={30} width={1200}>
+            {this.renderTextAreas()}
+          </GridLayout>
+
           <button className="section__form-newline" onClick={this.addSection}>
             add another section
           </button>
