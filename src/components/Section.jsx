@@ -387,7 +387,7 @@ class Section extends Component {
             draggableCancel=".undraggable"
             cols={12}
             rowHeight={30}
-            width={740}
+            width={250}
           >
             {this.renderTextAreas()}
           </GridLayout>

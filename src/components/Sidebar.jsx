@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import MediaQuery from "react-responsive";
 
 import settings from "../assets/settings.png";
 import bible from "../assets/bible.png";
@@ -42,7 +43,12 @@ class Sidebar extends Component {
     return (
       <div className={this.props.sidebarClass}>
         <div className="sidebar__items">
-          <h1 className="sidebar-title">elysian</h1>
+          <MediaQuery query="(max-device-width: 700px)">
+            <h1 className="sidebar-title">e</h1>
+          </MediaQuery>
+          <MediaQuery query="(min-device-width: 700px)">
+            <h1 className="sidebar-title">elysian</h1>
+          </MediaQuery>
 
           <img
             style={{ marginTop: "-20px", marginBottom: "20px" }}
