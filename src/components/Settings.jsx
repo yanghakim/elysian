@@ -55,59 +55,61 @@ class Settings extends Component {
   render() {
     return (
       <div className="settings">
-        <p className="settings-title">Settings</p>
-        <form className="settings__form">
-          <p className="settings__form-title">Change Your Password</p>
-          <input
-            type="password"
-            className="settings__form-input"
-            placeholder="old password"
-          />
-          <input
-            type="password"
-            className="settings__form-input"
-            placeholder="new password"
-          />
-          <input
-            type="password"
-            className="settings__form-input"
-            placeholder="confirm new password"
-          />
-          <button className="settings__form-submit">submit changes</button>
-        </form>
+        <div className="settings__view">
+          <p className="settings-title">Settings</p>
+          <form className="settings__form">
+            <p className="settings__form-title">Change Your Password</p>
+            <input
+              type="password"
+              className="settings__form-input"
+              placeholder="old password"
+            />
+            <input
+              type="password"
+              className="settings__form-input"
+              placeholder="new password"
+            />
+            <input
+              type="password"
+              className="settings__form-input"
+              placeholder="confirm new password"
+            />
+            <button className="settings__form-submit">submit changes</button>
+          </form>
 
-        <div className="settings__links">
-          <p className="settings__links-title">Link Your Accounts</p>
-          <button
-            className={this.state.googleClass}
-            onClick={() => this.linkAccount("Google")}
-          >
-            {this.state.googleText}
-          </button>
-          <button
-            className={this.state.icloudClass}
-            onClick={() => this.linkAccount("iCloud")}
-          >
-            {this.state.icloudText}
-          </button>
-          <button
-            className={this.state.evernoteClass}
-            onClick={() => this.linkAccount("Evernote")}
-          >
-            {this.state.evernoteText}
-          </button>
-          <button
-            className={this.state.spotifyClass}
-            onClick={() => this.linkAccount("Spotify")}
-          >
-            {this.state.spotifyText}
-          </button>
-          <button
-            className={this.state.itunesClass}
-            onClick={() => this.linkAccount("iTunes")}
-          >
-            {this.state.itunesText}
-          </button>
+          <div className="settings__links">
+            <p className="settings__links-title">Link Your Accounts</p>
+            <button
+              className={this.state.googleClass}
+              onClick={() => this.linkAccount("Google")}
+            >
+              {this.state.googleText}
+            </button>
+            <button
+              className={this.state.icloudClass}
+              onClick={() => this.linkAccount("iCloud")}
+            >
+              {this.state.icloudText}
+            </button>
+            <button
+              className={this.state.evernoteClass}
+              onClick={() => this.linkAccount("Evernote")}
+            >
+              {this.state.evernoteText}
+            </button>
+            <button
+              className={this.state.spotifyClass}
+              onClick={() => this.linkAccount("Spotify")}
+            >
+              {this.state.spotifyText}
+            </button>
+            <button
+              className={this.state.itunesClass}
+              onClick={() => this.linkAccount("iTunes")}
+            >
+              {this.state.itunesText}
+            </button>
+          </div>
         </div>
       </div>
     );

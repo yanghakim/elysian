@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 import "../sass/login.sass";
 
@@ -7,7 +8,8 @@ class Login extends Component {
     super();
 
     this.state = {
-      loginClass: "login"
+      loginClass: "login",
+      exit: false
     };
   }
 
@@ -17,11 +19,17 @@ class Login extends Component {
     });
 
     setTimeout(() => {
-      this.props.switchSections("bible");
+      this.setState({
+        exit: true
+      });
     }, 1000);
   };
 
   render() {
+    if (this.state.exit) {
+      return <Redirect push to="/menu" replace />;
+    }
+
     return (
       <div className={this.state.loginClass}>
         <p className="login-title">elysian</p>
@@ -33,7 +41,6 @@ class Login extends Component {
             type="password"
             placeholder="password"
           />
-
           <button className="login-login" onClick={this.handleLogin}>
             Login
           </button>
