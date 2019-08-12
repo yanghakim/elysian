@@ -43,12 +43,13 @@ class Home extends Component {
     });
 
     this.resize();
-    window.addEventListener("resize", () => {
-      this.resize();
-    });
+    window.addEventListener("resize", this.resize);
 
     const header = document.getElementById("header");
     header.value = this.state.section;
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resize);
   }
 
   resize = () => {
@@ -208,7 +209,7 @@ class Home extends Component {
           value={this.state.title}
           onChange={this.handleTitleChange}
           placeholder={this.state.titlePlaceholder}
-          autofocus
+          autoFocus
         />
         {this.state.section === "photography/snapshots" && (
           <button className="home-btn">open Google photos</button>

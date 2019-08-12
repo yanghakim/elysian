@@ -6,49 +6,21 @@ import preview from "../assets/preview.png";
 import "../sass/checkout.sass";
 
 class Checkout extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      checkoutClass: "checkout",
-      toMainMenu: false
-    };
-  }
-
-  toMainMenu = () => {
-    this.setState({
-      checkoutClass: "checkout exit"
-    });
-
-    setTimeout(() => {
-      this.setState({
-        toMainMenu: true
-      });
-    }, 200);
-  };
-
   render() {
-    if (this.state.toMainMenu) {
-      this.props.history.goBack();
-    }
-
     return (
-      <div className={this.state.checkoutClass}>
-        <div className="checkout__left">
-          <p className="checkout__left-back" onClick={this.toMainMenu}>
-            back
-          </p>
-          <div className="checkout__left__heading">
-            <p className="checkout__left__heading-title">elysian</p>
-            <p className="checkout__left__heading-header">checkout</p>
+      <div className="checkout">
+        <div className="checkout__top">
+          <div className="checkout__top__heading">
+            <p className="checkout__top__heading-title">elysian</p>
+            <p className="checkout__top__heading-header">checkout</p>
           </div>
           <img
-            className="checkout__left-img"
+            className="checkout__top-img"
             src={preview}
-            width="450"
-            height="450"
+            width="300"
+            height="300"
           />
-          <span className="checkout__left-expandbtn" />
+          <span className="checkout__top-expandbtn" />
         </div>
         <div className="checkout__interior">
           <p className="checkout__interior-header">preview interior</p>
