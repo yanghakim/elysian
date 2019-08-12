@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import Login from "./Login";
 import Menu from "./Menu";
-import Home from "./Home";
+import Elysian from "./Elysian";
 import Checkout from "./Checkout";
 import Settings from "./Settings";
 
@@ -16,9 +16,7 @@ class App extends Component {
         <div>
           <Route path="/" exact component={Login} />
           <Route path="/menu" exact component={Menu} />
-          <Route path="/home" exact component={Home} />
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/settings" component={Settings} />
+          <Route path="/home" exact component={Elysian} />
         </div>
       </BrowserRouter>
     );

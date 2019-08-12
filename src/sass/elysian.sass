@@ -1,0 +1,73 @@
+.elysian
+  height: 100vh
+  width: 100%
+
+  display: flex
+  justify-content: center
+
+  box-sizing: border-box
+
+  background-color: rgba(60, 76, 94, 0.1)
+
+  &__sidebar
+    position: absolute
+    bottom: 3%
+    left: 2%
+
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+
+    z-index: 5
+
+    cursor: pointer
+
+    -webkit-animation: heartbeat 1.5s ease-in-out
+    animation: heartbeat 1.5s ease-in-out
+
+    img
+      &:hover
+        -webkit-animation: heartbeat 1.5s ease-in-out infinite alternate
+        animation: heartbeat 1.5s ease-in-out infinite alternate
+
+    &__dropdown
+      display: none
+      height: 48px
+
+      margin-left: 10px
+      padding: 0 10px
+
+      background-color: white
+      border: 1px solid #CCC
+
+      border-radius: 5px
+
+      &.show
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+
+      &-btn
+        color: black
+
+        animation: fade-in 0.5s ease forwards
+        cursor: pointer
+
+        &:hover
+          color: red
+
+      &-savebtn
+        background-color: white
+        border: 1px solid rgba(255, 0, 0, 0.5)
+        border-radius: 5px
+        color: black
+
+        animation: fade-in 0.5s ease forwards
+        cursor: pointer
+
+        transition: 0.5s ease
+
+        &:hover
+          color: red

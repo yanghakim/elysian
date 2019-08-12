@@ -8,7 +8,6 @@ class Settings extends Component {
     super();
 
     this.state = {
-      settingsViewClass: "settings__view",
       toHome: false,
       googleText: "link to Google Photos",
       icloudText: "link to iCloud Photos",
@@ -55,76 +54,61 @@ class Settings extends Component {
     }
   };
 
-  returnHome = () => {
-    this.setState({ settingsViewClass: "settings__view exit" });
-    setTimeout(() => {
-      this.setState({ toHome: true });
-    }, 500);
-  };
-
   render() {
-    if (this.state.toHome) {
-      this.props.history.goBack();
-    }
     return (
       <div className="settings">
-        <div className={this.state.settingsViewClass}>
-          <p className="settings-title">Settings</p>
-          <form className="settings__form">
-            <p className="settings__form-title">Change Your Password</p>
-            <input
-              type="password"
-              className="settings__form-input"
-              placeholder="old password"
-            />
-            <input
-              type="password"
-              className="settings__form-input"
-              placeholder="new password"
-            />
-            <input
-              type="password"
-              className="settings__form-input"
-              placeholder="confirm new password"
-            />
-            <button className="settings__form-submit">submit changes</button>
-          </form>
+        <p className="settings-title">Settings</p>
+        <form className="settings__form">
+          <p className="settings__form-title">Change Your Password</p>
+          <input
+            type="password"
+            className="settings__form-input"
+            placeholder="old password"
+          />
+          <input
+            type="password"
+            className="settings__form-input"
+            placeholder="new password"
+          />
+          <input
+            type="password"
+            className="settings__form-input"
+            placeholder="confirm new password"
+          />
+          <button className="settings__form-submit">submit changes</button>
+        </form>
 
-          <div className="settings__links">
-            <p className="settings__links-title">Link Your Accounts</p>
-            <button
-              className={this.state.googleClass}
-              onClick={() => this.linkAccount("Google")}
-            >
-              {this.state.googleText}
-            </button>
-            <button
-              className={this.state.icloudClass}
-              onClick={() => this.linkAccount("iCloud")}
-            >
-              {this.state.icloudText}
-            </button>
-            <button
-              className={this.state.evernoteClass}
-              onClick={() => this.linkAccount("Evernote")}
-            >
-              {this.state.evernoteText}
-            </button>
-            <button
-              className={this.state.spotifyClass}
-              onClick={() => this.linkAccount("Spotify")}
-            >
-              {this.state.spotifyText}
-            </button>
-            <button
-              className={this.state.itunesClass}
-              onClick={() => this.linkAccount("iTunes")}
-            >
-              {this.state.itunesText}
-            </button>
-          </div>
-          <button className="settings-returnbtn" onClick={this.returnHome}>
-            return
+        <div className="settings__links">
+          <p className="settings__links-title">Link Your Accounts</p>
+          <button
+            className={this.state.googleClass}
+            onClick={() => this.linkAccount("Google")}
+          >
+            {this.state.googleText}
+          </button>
+          <button
+            className={this.state.icloudClass}
+            onClick={() => this.linkAccount("iCloud")}
+          >
+            {this.state.icloudText}
+          </button>
+          <button
+            className={this.state.evernoteClass}
+            onClick={() => this.linkAccount("Evernote")}
+          >
+            {this.state.evernoteText}
+          </button>
+          <button
+            className={this.state.spotifyClass}
+            onClick={() => this.linkAccount("Spotify")}
+          >
+            {this.state.spotifyText}
+          </button>
+          <button
+            className={this.state.itunesClass}
+            onClick={() => this.linkAccount("iTunes")}
+          >
+            {this.state.itunesText}
           </button>
         </div>
       </div>

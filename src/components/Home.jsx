@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import GridLayout from "react-grid-layout";
-import { Redirect } from "react-router-dom";
 
 import "../css/react-grid-layout.css";
 import "../css/react-resizable.css";
@@ -14,9 +13,8 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      section: props.location.state.section,
+      section: props.section,
       gridWidth: document.body.clientWidth - 640,
-      homeClass: "home",
       title: "",
       titlePlaceholder: "TITLE",
       numOfSections: 1,
@@ -26,11 +24,7 @@ class Home extends Component {
       deletedIndex: null,
       showDeletedNotif: false,
       undoClass: "home-undobtn",
-      linkValue: "",
-      linkPlaceholder: "link to passage",
-      date: "",
-      toSettings: false,
-      toCheckout: false
+      date: ""
     };
   }
 
@@ -60,30 +54,6 @@ class Home extends Component {
   resize = () => {
     const width = document.getElementsByClassName("home-title")[0].offsetWidth;
     this.setState({ gridWidth: width });
-  };
-
-  /**
-   * Sets LINK placeholder text according to section selected
-   **/
-  setLinkPlaceholder = () => {
-    switch (this.state.section) {
-      case "bible":
-        return this.setState({ linkPlaceholder: "link to passage" });
-      case "quiet times":
-        return this.setState({ linkPlaceholder: "link to resources" });
-      case "devotionals/articles/podcasts":
-        return this.setState({ linkPlaceholder: "link to article/podcast" });
-      case "books/novels":
-        return this.setState({ linkPlaceholder: "link to book/novel" });
-      case "sermons":
-        return this.setState({ linkPlaceholder: "link to sermon" });
-      case "photography/snapshots":
-        return this.setState({ linkPlaceholder: "link to photos" });
-      case "songs/lyrics":
-        return this.setState({ linkPlaceholder: "link to song/lyrics" });
-      default:
-        break;
-    }
   };
 
   /**
@@ -210,128 +180,63 @@ class Home extends Component {
     }, 100);
   };
 
-  handleLinkChange = e => {
-    this.setState({
-      linkValue: e.target.value
-    });
-  };
-
-  /**
-   * Route handlers
-   **/
-  toSettings = () => {
-    this.setState({
-      homeClass: "home exit"
-    });
-    setTimeout(() => {
-      this.setState({
-        toSettings: true
-      });
-    }, 500);
-  };
-
-  toCheckout = () => {
-    this.setState({
-      homeClass: "home exit"
-    });
-    setTimeout(() => {
-      this.setState({
-        toCheckout: true
-      });
-    }, 500);
-  };
-
   render() {
-    if (this.state.toSettings) {
-      return <Redirect push to="/settings" replace />;
-    }
-    if (this.state.toCheckout) {
-      return <Redirect push to="/checkout" replace />;
-    }
     return (
-      <div className="dynamicContainer">
-        <div className={this.state.homeClass}>
-          <div className="home__top">
-            <select
-              className="home__top-header"
-              id="header"
-              onChange={this.changeSection}
-            >
-              <option value="bible">bible</option>
-              <option value="quiet times">quiet times</option>
-              <option value="devotionals/articles/podcasts">
-                devotionals/articles/podcasts
-              </option>
-              <option value="sermons">sermons</option>
-              <option value="photography/snapshots">
-                photography/snapshots
-              </option>
-              <option value="songs/lyrics">songs/lyrics</option>
-              <option value="meet ups">meet ups</option>
-              <option value="relationships">relationships</option>
-            </select>
-            <p className="home__top-date">{this.state.date}</p>
-          </div>
-          <input
-            className="home-title"
-            type="text"
-            value={this.state.title}
-            onChange={this.handleTitleChange}
-            placeholder={this.state.titlePlaceholder}
-          />
-          {this.state.section === "photography/snapshots" && (
-            <button className="home-btn">open Google photos</button>
-          )}
-          {this.state.section === "photography/snapshots" && (
-            <button className="home-btn">open iCloud photos</button>
-          )}
-          {this.state.section === "songs/lyrics" && (
-            <button className="home-btn">search song/lyrics</button>
-          )}
-          {this.state.linkPlaceholder && (
-            <input
-              className="home-link"
-              placeholder={this.state.linkPlaceholder}
-              value={this.state.linkValue}
-              onChange={this.handleLinkChange}
-            />
-          )}
-          <GridLayout
-            className="layout"
-            draggableCancel=".undraggable"
-            cols={12}
-            rowHeight={30}
-            width={this.state.gridWidth}
+      <div className="home">
+        <div className="home__top">
+          <select
+            className="home__top-header"
+            id="header"
+            onChange={this.changeSection}
           >
-            {this.renderTextAreas()}
-          </GridLayout>
-          <button className="home__form-newline" onClick={this.addSection}>
-            add another home
-          </button>
-          {this.state.showDeletedNotif && (
-            <button
-              className={this.state.undoClass}
-              onClick={this.undoDeletion}
-            >
-              undo delete?
-            </button>
-          )}
-          <div className="home__buttons">
-            <button
-              className="home__buttons-purchasebtn"
-              onClick={this.toCheckout}
-            >
-              purchase
-            </button>
-            <button
-              className="home__buttons-settingsbtn"
-              onClick={this.toSettings}
-            >
-              settings
-            </button>
-            <button className="home__buttons-savebtn">save</button>
-          </div>
+            <option value="bible">bible</option>
+            <option value="quiet times">quiet times</option>
+            <option value="devotionals/articles/podcasts">
+              devotionals/articles/podcasts
+            </option>
+            <option value="sermons">sermons</option>
+            <option value="photography/snapshots">photography/snapshots</option>
+            <option value="songs/lyrics">songs/lyrics</option>
+            <option value="meet ups">meet ups</option>
+            <option value="relationships">relationships</option>
+          </select>
+          <p className="home__top-date">{this.state.date}</p>
         </div>
+        <input
+          className="home-title"
+          type="text"
+          value={this.state.title}
+          onChange={this.handleTitleChange}
+          placeholder={this.state.titlePlaceholder}
+          autofocus
+        />
+        {this.state.section === "photography/snapshots" && (
+          <button className="home-btn">open Google photos</button>
+        )}
+        {this.state.section === "photography/snapshots" && (
+          <button className="home-btn">open iCloud photos</button>
+        )}
+        {this.state.section === "songs/lyrics" && (
+          <button className="home-btn">search song/lyrics</button>
+        )}
+
+        <GridLayout
+          className="layout"
+          draggableCancel=".undraggable"
+          cols={12}
+          rowHeight={30}
+          width={this.state.gridWidth}
+        >
+          {this.renderTextAreas()}
+        </GridLayout>
+        <button className="home__form-newline" onClick={this.addSection}>
+          add another home
+        </button>
+        {this.state.showDeletedNotif && (
+          <button className={this.state.undoClass} onClick={this.undoDeletion}>
+            undo delete?
+          </button>
+        )}
       </div>
     );
   }
