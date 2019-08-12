@@ -231,10 +231,10 @@ class Sidebar extends Component {
 
           <p className="sidebar-item separator" />
 
-          <img src={bible} height="0" width="0" alt="todos" />
+          <img height="0" width="0" />
           <p className="sidebar-item">todos</p>
 
-          <img src={bible} height="0" width="0" alt="reminders" />
+          <img height="0" width="0" />
           <p className="sidebar-item">reminders</p>
         </div>
         <div className="sidebar__footer">

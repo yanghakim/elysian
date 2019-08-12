@@ -16,8 +16,7 @@
 
   box-sizing: border-box
 
-  max-width: 1000px
-  width: 365px
+  width: 100%
 
   padding: 10px 30px
 
@@ -29,13 +28,12 @@
 
   background-color: white
   animation: fade-in 1s ease-out both
-  transition: 1.5s ease
 
   overflow-y: scroll
   overflow-x: hidden
 
   @media (max-width: 900px)
-    font-size: 0.7em
+    font-size: 0.8em
 
   &::-webkit-scrollbar
     background: none
@@ -69,7 +67,7 @@
   &-title
     font-size: 2em
     letter-spacing: 5px
-    width: 90%
+    width: 100%
 
     margin-left: 0px
     margin-bottom: 10px
@@ -155,7 +153,6 @@
     display: grid
     grid-template-rows: 30px 1fr
 
-    transition: 0.8s ease
 
     @media (max-width: 900px)
       margin-left: 0

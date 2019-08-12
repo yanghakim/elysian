@@ -1,21 +1,20 @@
 import React, { Component } from "react";
-import TextareaAutosize from "react-autosize-textarea";
-
+import ReactResizeDetector from "react-resize-detector";
 import GridLayout from "react-grid-layout";
 import "../css/react-grid-layout.css";
 import "../css/react-resizable.css";
 
 import Add from "./Add";
 
-import cart from "../assets/cart.png";
-
 import "../sass/section.sass";
 
 class Section extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      sidebarToggle: props.sidebarClass,
+      gridWidth: document.body.clientWidth - 290,
       title: "",
       titlePlaceholder: "TITLE",
       numOfSections: 1,
@@ -50,6 +49,7 @@ class Section extends Component {
 
   /**
    * Setting today's date
+   * Listen to screen size change and change widths of components
    **/
   componentDidMount() {
     let today = new Date();
@@ -60,7 +60,18 @@ class Section extends Component {
     this.setState({
       date: mm + "/" + dd + "/" + yyyy
     });
+
+    window.addEventListener("resize", () => {
+      const width = document.getElementsByClassName("section-title")[0]
+        .offsetWidth;
+
+      this.setState({ gridWidth: width });
+    });
   }
+
+  onResize = (width, height) => {
+    this.setState({ gridWidth: width });
+  };
 
   /**
    * Handling SAVING text when leaving a section,
@@ -358,13 +369,19 @@ class Section extends Component {
             <p className="section__top-header">{this.props.section}</p>
             <p className="section__top-date">{this.state.date}</p>
           </div>
-          <input
-            className="section-title"
-            type="text"
-            value={this.state.title}
-            onChange={this.handleTitleChange}
-            placeholder={this.state.titlePlaceholder}
-          />
+          <ReactResizeDetector
+            handleWidth
+            handleHeight
+            onResize={this.onResize}
+          >
+            <input
+              className="section-title"
+              type="text"
+              value={this.state.title}
+              onChange={this.handleTitleChange}
+              placeholder={this.state.titlePlaceholder}
+            />
+          </ReactResizeDetector>
           {this.props.section === "photography/snapshots" && (
             <button className="section-btn">open Google photos</button>
           )}
@@ -387,7 +404,7 @@ class Section extends Component {
             draggableCancel=".undraggable"
             cols={12}
             rowHeight={30}
-            width={250}
+            width={this.state.gridWidth}
           >
             {this.renderTextAreas()}
           </GridLayout>

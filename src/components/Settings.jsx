@@ -47,6 +47,8 @@ class Settings extends Component {
           itunesText: "linked to yanghakim@apple.com",
           itunesClass: "settings__links-button linked"
         });
+      default:
+        break;
     }
   };
 

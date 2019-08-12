@@ -9,6 +9,7 @@
     "react-autosize-textarea": "^7.0.0",
     "react-dom": "^16.8.6",
     "react-grid-layout": "^0.16.6",
+    "react-resize-detector": "^4.2.0",
     "react-responsive": "^7.0.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"

@@ -89,7 +89,10 @@ class Elysian extends Component {
         {this.state.section === "settings" && <Settings />}
         {!this.state.section && <Login switchSections={this.switchSections} />}
         {this.state.section !== "settings" && (
-          <Section section={this.state.section} />
+          <Section
+            section={this.state.section}
+            sidebarClass={this.state.sidebarClass}
+          />
         )}
       </div>
     );
