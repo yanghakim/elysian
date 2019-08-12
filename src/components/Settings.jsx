@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 import "../sass/settings.sass";
 
@@ -7,6 +8,8 @@ class Settings extends Component {
     super();
 
     this.state = {
+      settingsViewClass: "settings__view",
+      toHome: false,
       googleText: "link to Google Photos",
       icloudText: "link to iCloud Photos",
       evernoteText: "link to Evernote",
@@ -52,10 +55,20 @@ class Settings extends Component {
     }
   };
 
+  returnHome = () => {
+    this.setState({ settingsViewClass: "settings__view exit" });
+    setTimeout(() => {
+      this.setState({ toHome: true });
+    }, 500);
+  };
+
   render() {
+    if (this.state.toHome) {
+      this.props.history.goBack();
+    }
     return (
       <div className="settings">
-        <div className="settings__view">
+        <div className={this.state.settingsViewClass}>
           <p className="settings-title">Settings</p>
           <form className="settings__form">
             <p className="settings__form-title">Change Your Password</p>
@@ -110,6 +123,9 @@ class Settings extends Component {
               {this.state.itunesText}
             </button>
           </div>
+          <button className="settings-returnbtn" onClick={this.returnHome}>
+            return
+          </button>
         </div>
       </div>
     );

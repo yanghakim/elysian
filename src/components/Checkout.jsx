@@ -29,7 +29,7 @@ class Checkout extends Component {
 
   render() {
     if (this.state.toMainMenu) {
-      return <Redirect push to="/" replace />;
+      this.props.history.goBack();
     }
 
     return (

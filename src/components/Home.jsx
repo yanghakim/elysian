@@ -29,7 +29,8 @@ class Home extends Component {
       linkValue: "",
       linkPlaceholder: "link to passage",
       date: "",
-      toSettings: false
+      toSettings: false,
+      toCheckout: false
     };
   }
 
@@ -229,9 +230,23 @@ class Home extends Component {
     }, 500);
   };
 
+  toCheckout = () => {
+    this.setState({
+      homeClass: "home exit"
+    });
+    setTimeout(() => {
+      this.setState({
+        toCheckout: true
+      });
+    }, 500);
+  };
+
   render() {
     if (this.state.toSettings) {
       return <Redirect push to="/settings" replace />;
+    }
+    if (this.state.toCheckout) {
+      return <Redirect push to="/checkout" replace />;
     }
     return (
       <div className="dynamicContainer">
@@ -302,7 +317,12 @@ class Home extends Component {
             </button>
           )}
           <div className="home__buttons">
-            <button className="home__buttons-purchasebtn">purchase</button>
+            <button
+              className="home__buttons-purchasebtn"
+              onClick={this.toCheckout}
+            >
+              purchase
+            </button>
             <button
               className="home__buttons-settingsbtn"
               onClick={this.toSettings}
