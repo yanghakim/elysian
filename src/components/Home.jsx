@@ -14,7 +14,8 @@ class Home extends Component {
 
     this.state = {
       section: props.section,
-      gridWidth: document.body.clientWidth - 640,
+      gridWidth: 1,
+      headerChoicesClass: "home__top__header-choices",
       title: "",
       titlePlaceholder: "TITLE",
       numOfSections: 1,
@@ -54,16 +55,66 @@ class Home extends Component {
 
   resize = () => {
     const width = document.getElementsByClassName("home-title")[0].offsetWidth;
-    this.setState({ gridWidth: width });
+    this.setState({ gridWidth: width + 20 });
+
+    console.log(width);
   };
 
   /**
    * Handling SECTION changes
    **/
-  changeSection = e => {
-    this.setState({
-      section: e.target.value
-    });
+  changeSection = choice => {
+    switch (choice) {
+      case 1:
+        this.setState({
+          section: "bible"
+        });
+        break;
+      case 2:
+        this.setState({
+          section: "quiet times"
+        });
+        break;
+      case 3:
+        this.setState({
+          section: "devotionals/articles/podcasts"
+        });
+        break;
+      case 4:
+        this.setState({
+          section: "sermons"
+        });
+        break;
+      case 5:
+        this.setState({
+          section: "photography/snapshots"
+        });
+        break;
+      case 6:
+        this.setState({
+          section: "songs/lyrics"
+        });
+        break;
+      case 7:
+        this.setState({
+          section: "meet ups"
+        });
+        break;
+      case 8:
+        this.setState({
+          section: "relationships"
+        });
+        break;
+      default:
+        this.setState(prevState => {
+          if (prevState.headerChoicesClass === "home__top__header-choices") {
+            return { headerChoicesClass: "home__top__header-choices show" };
+          } else {
+            return { headerChoicesClass: "home__top__header-choices" };
+          }
+        });
+        break;
+    }
   };
 
   /**
@@ -185,22 +236,33 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="home__top">
-          <select
-            className="home__top-header"
-            id="header"
-            onChange={this.changeSection}
-          >
-            <option value="bible">bible</option>
-            <option value="quiet times">quiet times</option>
-            <option value="devotionals/articles/podcasts">
-              devotionals/articles/podcasts
-            </option>
-            <option value="sermons">sermons</option>
-            <option value="photography/snapshots">photography/snapshots</option>
-            <option value="songs/lyrics">songs/lyrics</option>
-            <option value="meet ups">meet ups</option>
-            <option value="relationships">relationships</option>
-          </select>
+          <div className="home__top__header" id="header">
+            <button
+              class="home__top__header-choice"
+              onClick={this.changeSection}
+            >
+              {this.state.section}
+            </button>
+            <div class={this.state.headerChoicesClass}>
+              <button onClick={() => this.changeSection(1)}>bible</button>
+              <button onClick={() => this.changeSection(2)}>quiet times</button>
+              <button onClick={() => this.changeSection(3)}>
+                devotionals/articles/podcasts
+              </button>
+              <button onClick={() => this.changeSection(4)}>sermons</button>
+              <button onClick={() => this.changeSection(5)}>
+                photography/snapshots
+              </button>
+              <button onClick={() => this.changeSection(6)}>
+                songs/lyrics
+              </button>
+              <button onClick={() => this.changeSection(7)}>meet ups</button>
+              <button onClick={() => this.changeSection(8)}>
+                relationships
+              </button>
+            </div>
+          </div>
+
           <p className="home__top-date">{this.state.date}</p>
         </div>
         <input
@@ -225,13 +287,13 @@ class Home extends Component {
           className="layout"
           draggableCancel=".undraggable"
           cols={12}
-          rowHeight={30}
+          rowHeight={50}
           width={this.state.gridWidth}
         >
           {this.renderTextAreas()}
         </GridLayout>
         <button className="home__form-newline" onClick={this.addSection}>
-          add another home
+          add another section
         </button>
         {this.state.showDeletedNotif && (
           <button className={this.state.undoClass} onClick={this.undoDeletion}>

@@ -1,3 +1,8 @@
+#preview
+  font-weight: 100
+  letter-spacing: 7px
+  font-size: 1em
+
 .checkout
   box-sizing: border-box
 
@@ -8,32 +13,37 @@
 
   padding: 50px 100px
 
-  border: 1px solid grey
-
   display: flex
   flex-direction: column
+  align-items: center
 
   background-color: #F3F3F3
 
-  overflow: hidden !important
+  overflow-x: hidden !important
 
   animation: floating 2s ease-in-out infinite alternate, fade-in 1.5s both
   transition: 0.5s ease
 
+  &::-webkit-scrollbar
+    background: none
+
+  &::-webkit-scrollbar-thumb
+    background: none
+
   &:hover
     border-radius: 10px 0 0 0
-    box-shadow: 5px 5px brown
+    box-shadow: 0 5px red
 
   @media (max-width: 1400px)
     width: 70%
 
   @media (max-width: 1100px)
     width: 100%
-
+    padding: 50px
   &__top
     width: 100%
-    height: 40%
     display: flex
+    flex-direction: column
     justify-content: center
     align-items: center
 
@@ -41,48 +51,15 @@
       width: 100%
       height: 60%
 
-    &-back
-      position: absolute
-      bottom: 2%
-      left: 3%
-
-      font-weight: 300
-      letter-spacing: 5px
-      font-size: 0.9em
-      text-align: center
-
-      color: black
-
-      border: 1px solid black
-      padding: 5px
-      padding-left: 10px
-
-      cursor: pointer
-      transition: 0.5s ease
-
-      @media (max-width: 900px)
-        top: 2%
-        bottom: auto
-        right: 3%
-        left: auto
-
-        font-size: 1em
-        padding: 5px
-        padding-left: 10px
-
-      &:hover
-        background-color: red
-
     &__heading
-      position: absolute
-      left: 3%
       top: 2%
       height: 200px
+      text-align: center
 
       &-title
         font-weight: 100
         letter-spacing: 10px
-        font-size: 1.2em
+        font-size: 1.5em
 
       &-header
         font-weight: 300
@@ -91,64 +68,82 @@
 
         margin-top: -20px
 
-  &__interior
-    bottom: 0
-    left: 0
-    top: auto
+    &__img
+      &-header
+        text-align: center
+      &-image
+        margin-top: 50px
 
-    width: 100%
-    height: 60%
+  &__interior
+    width: 600px
+    height: auto
+
+    margin-top: 70px
 
     display: flex
     flex-direction: column
+    align-items: center
 
     box-sizing: border-box
 
-    &-header
-      color: red
-
     &-journal
       overflow-x: hidden
-      border: 1px solid grey
+
+      max-height: 775px
+
+      box-sizing: border-box
+
+      padding: 30px 50px
+      margin: 30px 0
+
+      border-right: 2px dashed rgba(72, 78, 97, 1)
+
+      background-color: rgba(213, 214, 234, 0.9)
+      box-shadow: -15px 15px rgba(197, 83, 80, 0.5), -15px 15px rgba(255, 0, 0, 0.9)
+
+      border-radius: 5px 5px 0 0
+
+      &.right
+        border-right: 2px dashed rgba(72, 78, 97, 1)
+
+      &.left
+        border-left: 2px dashed rgba(72, 78, 97, 1)
 
       &::-webkit-scrollbar
         background: none
-        border: 1px solid grey
-        width: 0.5em
 
       &::-webkit-scrollbar-thumb
-        background-color: black
+        background: none
 
       &-text
         margin: 30px 0
 
-        font-weight: 300
+        color: rgba(213, 214, 234, 0.9)
+        letter-spacing: 1px
+        font-weight: 600
+        font-size: 0.9em
+
+        background-color: rgba(72, 78, 97, 0.8)
+
+        padding: 5px 10px
+        border-radius: 5px
 
     &__checkout
       display: grid
       grid-template-columns: repeat(2, 1fr)
 
-      margin-right: 25px
-      font-weight: 300
+      width: 100%
 
-      @media (max-width: 900px)
-        margin-right: 0
-        margin-bottom: 5px
+      font-weight: 300
 
       &-header
         grid-column: 1 / span 2
-        color: red
         font-weight: 500
-
-      &-item
-        @media (max-width: 900px)
-          margin: 0
+        text-align: center
+        margin: 50px 0
 
       &-price
         justify-self: flex-end
-
-        @media (max-width: 900px)
-          margin: 0
 
         &.total
           color: red

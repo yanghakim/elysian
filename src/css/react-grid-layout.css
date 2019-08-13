@@ -6,12 +6,10 @@
 .react-grid-item {
   transition: all 200ms ease;
   transition-property: left, top;
-  border: 1px solid rgba(128, 128, 128, 0.05);
-  margin-left: -5px;
+  margin-left: -10px;
+  margin-top: -10px;
 }
-.react-grid-item:hover {
-  border: 1px solid rgba(128, 128, 128, 0.2);
-}
+
 .react-grid-item.cssTransforms {
   transition-property: transform;
 }
