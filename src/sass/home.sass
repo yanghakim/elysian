@@ -1,3 +1,5 @@
+@import "./variables.sass"
+
 .home
   font-size: 1em
   font-weight: 300
@@ -95,7 +97,6 @@
         background-color: #e9e9e9
 
         box-shadow: 0 -5px red
-
 
         z-index: 5
         padding: 5px
@@ -197,22 +198,51 @@
     &__top
       display: flex
       flex-direction: row
+      align-items: center
 
-      &-subtract
-        font-size: 1em
-        font-weight: 300
+      height: 25px
 
-        opacity: 0.9
-
-        align-self: baseline
-
-        z-index: 0
-
-        cursor: pointer
-        transition: 0.5s ease
+      &-move
+        @include formButton
 
         &:hover
-          font-weight: 900
+          background-color: #e0e0e0
+
+          border-radius: 5px 0 5px 0
+          color: black
+
+        &.active
+          background-color: #e0e0e0
+
+          border-radius: 5px 0 5px 0
+          color: black
+
+      &-subtract
+        @include formButton
+
+      &-biggertext
+        @include formButton
+
+        &:hover
+          font-weight: 600
+          background: none
+
+        &.active
+          font-weight: 600
+          background: none
+
+      &-smallertext
+        @include formButton
+
+        font-size: 0.7em
+
+        &:hover
+          font-weight: 600
+          background: none
+
+        &.active
+          font-weight: 600
+          background: none
 
     &-input
       outline: none

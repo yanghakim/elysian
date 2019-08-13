@@ -18,6 +18,7 @@ class Home extends Component {
       headerChoicesClass: "home__top__header-choices",
       title: "",
       titlePlaceholder: "TITLE",
+      fontSize: 1,
       numOfSections: 1,
       text: [""],
       newText: [""],
@@ -133,6 +134,21 @@ class Home extends Component {
   };
 
   /**
+   * Handling TEXT SIZE adjustments
+   **/
+  editTextSize = direction => {
+    if (direction === "+") {
+      this.setState(prevState => {
+        return { fontSize: prevState.fontSize + 0.1 };
+      });
+    } else if (direction === "-") {
+      this.setState(prevState => {
+        return { fontSize: prevState.fontSize - 0.1 };
+      });
+    }
+  };
+
+  /**
    * Rendering TEXT AREA, adding and subtracting lines when appropriate
    **/
   renderTextAreas = () => {
@@ -147,7 +163,7 @@ class Home extends Component {
           data-grid={{ x: 0, y: index + 2, w: 12, h: 2, minW: 3, minH: 2 }}
         >
           <div className="home__form__top">
-            <button className="home__form__top-subtract">=</button>
+            <button className="home__form__top-move">=</button>
             <Add />
             {length === 1 && <button style={{ opacity: 0 }}>-</button>}
             {length > 1 && (
@@ -159,6 +175,18 @@ class Home extends Component {
                 -
               </button>
             )}
+            <button
+              className="home__form__top-biggertext undraggable"
+              onClick={() => this.editTextSize("+")}
+            >
+              A
+            </button>
+            <button
+              className="home__form__top-smallertext undraggable"
+              onClick={() => this.editTextSize("-")}
+            >
+              A
+            </button>
           </div>
 
           <textarea
@@ -168,6 +196,7 @@ class Home extends Component {
             value={this.state.text[index]}
             onChange={this.handleTextChange}
             placeholder="reflections/notes"
+            style={{ fontSize: this.state.fontSize + "em" }}
           />
         </div>
       );

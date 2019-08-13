@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap')
+@import "./variables.sass"
 
 .hide
   display: none !important
@@ -21,36 +22,16 @@
   animation: 0.5s ease
 
 .add
-  display: block
-  justify-self: center
-
   z-index: 3
 
   &-btn
-    color: red
-    font-family: "Quicksand", sans-serif
-    font-size: 1em
-    font-weight: 300
-
-    opacity: 0.9
-
-    align-self: baseline
-
-    z-index: 0
-
-    cursor: pointer
-    transition: 0.5s ease
+    @include formButton
 
     &:hover
-      background-color: #F0F0F0
-      box-shadow: -2px 2px black
+      border-radius: 0 0 5px 5px
 
     &.active
-      background-color: #F0F0F0
-
       border-radius: 5px 0 0 0
-      box-shadow: -2px 2px black
-      color: black
 
   &__hidden
     position: absolute
@@ -60,9 +41,8 @@
 
     transition: 0.5s ease
 
-    background-color: #F0F0F0
+    background-color: #e0e0e0
     border-radius: 0 5px 5px 5px
-    box-shadow: -2px 2px black
 
     font-family: "Quicksand", sans-serif
     font-size: 0.8em
@@ -85,6 +65,7 @@
 
       cursor: pointer
       color: black
+      font-weight: 500
 
       transition: 0.5s ease
 
@@ -124,12 +105,20 @@
         background-color: #E0e0e0
         border: 1px solid black
         padding: 5px
+        font-weight: 600
 
         &:focus
           border-bottom: 1px solid red
 
       &.searching
         color: red
+        font-weight: 600
+
+        transition: 0.5s ease
+
+        &:hover
+          color: black
+
 
 
 @keyframes swing-in-top-fwd
@@ -141,13 +130,13 @@
   100%
     transform: rotateX(0)
     transform-origin: top
-    opacity: 1
+    opacity: 0.8
 
 @keyframes swing-out-top-bck
   0%
     transform: rotateX(0)
     transform-origin: top
-    opacity: 1
+    opacity: 0.8
 
   100%
     transform: rotateX(100deg)
