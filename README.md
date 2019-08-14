@@ -36,19 +36,18 @@
 1. Wait for the Logo to fade. Press Login. (Site is currently STATIC)
 2. Declare your intention for using the app.
 3. Play around with the grid layout.
-- Add new sections.
-- Type, resize, and delete sections.
-- Redo delete and watch the section reappear.
+  - Add new sections.
+  - Type, resize, and delete sections.
+  - Redo delete and watch the section reappear.
 4. Click the Logo on the bottom left corner.
-- Navigate to Settings component.
-- Navigate to Checkout component.
+  - Navigate to Settings component.
+  - Navigate to Checkout component.
 
 ## Credits
 
 This software uses the following open source packages:
 
 - [React.js](https://reactjs.org/)
-
 - [Icon made by Freepik from www.flaticon.com](www.flaticon.com)
 
 ## You may also like...
