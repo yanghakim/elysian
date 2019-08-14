@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center">A Christian Journaling app built upon <a href="https://twitter.com/mern_io" target="_blank">Angular</a>.
+<h4 align="center">(WIP) A Christian Journaling app built upon <a href="https://twitter.com/mern_io" target="_blank">Angular</a>.
 </h4>
 <p align="center">
   <a href="https://scrutinizer-ci.com/g/yanghakim/elysian/?branch=master">
