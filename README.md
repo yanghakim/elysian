@@ -22,7 +22,7 @@
   <a href="#you-may-also-like">Related</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/yanghakim/elysian/master/src/images/elysian/home.png)
+![screenshot](https://raw.githubusercontent.com/yanghakim/portfolio/master/src/images/elysian/home.png)
 
 ## Key Features
 
