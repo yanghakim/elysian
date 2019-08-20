@@ -267,7 +267,7 @@ class Home extends Component {
         <div className="home__top">
           <div className="home__top__header" id="header">
             <button
-              class="home__top__header-choice"
+              className="home__top__header-choice"
               onClick={this.changeSection}
             >
               {this.state.section}
